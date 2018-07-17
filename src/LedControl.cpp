@@ -47,7 +47,7 @@ LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices) {
     SPI_MOSI=dataPin;
     SPI_CLK=clkPin;
     SPI_CS=csPin;
-    if(numDevices<=0 || numDevices>8 )
+    if(numDevices<=0 || numDevices>LED_CONTROL_SUPPORT_DEVICE )
         numDevices=8;
     maxDevices=numDevices;
     pinMode(SPI_MOSI,OUTPUT);
@@ -55,7 +55,7 @@ LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices) {
     pinMode(SPI_CS,OUTPUT);
     digitalWrite(SPI_CS,HIGH);
     SPI_MOSI=dataPin;
-    for(int i=0;i<64;i++) 
+    for(int i=0;i<8*LED_CONTROL_SUPPORT_DEVICE;i++)
         status[i]=0x00;
     for(int i=0;i<maxDevices;i++) {
         spiTransfer(i,OP_DISPLAYTEST,0);

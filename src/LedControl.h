@@ -29,6 +29,8 @@
 
 #include <pgmspace.h>
 
+#define LED_CONTROL_SUPPORT_DEVICE 8
+
 #if (ARDUINO >= 100)
 #include <Arduino.h>
 #else
@@ -61,12 +63,12 @@ const static byte charTable [] PROGMEM  = {
 class LedControl {
     private :
         /* The array for shifting the data to the devices */
-        byte spidata[16];
+        byte spidata[2 * LED_CONTROL_SUPPORT_DEVICE];
         /* Send out a single command to the device */
         void spiTransfer(int addr, byte opcode, byte data);
 
         /* We keep track of the led-status for all 8 devices in this array */
-        byte status[64];
+        byte status[8 * LED_CONTROL_SUPPORT_DEVICE];
         /* Data is shifted out of this pin*/
         int SPI_MOSI;
         /* The clock is signaled on this pin */
