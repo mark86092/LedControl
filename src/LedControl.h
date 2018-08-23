@@ -29,7 +29,7 @@
 
 #include <pgmspace.h>
 
-#define LED_CONTROL_SUPPORT_DEVICE 8
+#define LED_CONTROL_SUPPORT_DEVICE 16
 
 #if (ARDUINO >= 100)
 #include <Arduino.h>
