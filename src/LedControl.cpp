@@ -48,7 +48,7 @@ LedControl::LedControl(int dataPin, int clkPin, int csPin, int numDevices) {
     SPI_CLK=clkPin;
     SPI_CS=csPin;
     if(numDevices<=0 || numDevices>LED_CONTROL_SUPPORT_DEVICE )
-        numDevices=8;
+        numDevices=LED_CONTROL_SUPPORT_DEVICE;
     maxDevices=numDevices;
     pinMode(SPI_MOSI,OUTPUT);
     pinMode(SPI_CLK,OUTPUT);
